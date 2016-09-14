@@ -1,0 +1,18 @@
+{
+  "name": "gulpTest",
+  "version": "1.0.0",
+  "description": "gulp test",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sugar",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.15.0",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-scss": "^1.4.0"
+  }
+}
