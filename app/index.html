@@ -7,7 +7,36 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-
+    <div class="btn btn-normal">button</div>
+    <div class="btn btn-success">button</div>
+    <div class="btn btn-faild">button</div>
+    <div class="dialog-wrap">
+        <div class="overlay"></div>
+        <div class="dialog">
+            <div class="dialog-ct">
+                <p>content</p>
+            </div>
+            <footer class="dialog-ft">
+                <div class="ft-btn">cancel</div>
+                <div class="ft-btn">ok</div>
+            </footer>
+        </div>
+    </div>
 </body>
-<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/vendor/jquery-1.9.1.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+    (function () {
+        function resizeSize() {
+            var docWidth = $(window).width();
+            var fontSize = docWidth / 10;
+            $('html').css('font-size', fontSize);
+        }
+        resizeSize();
+
+        $(window).resize(function () {
+            resizeSize();
+        });
+    })();
+</script>
 </html>

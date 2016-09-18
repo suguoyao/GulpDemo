@@ -1,0 +1,94 @@
+@import "function";
+@import "variables";
+@import "mixin";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+*btn group
+*/
+.btn-normal {
+  @include btn(blue);
+}
+
+.btn-success {
+  @include btn(green);
+}
+
+.btn-faild {
+  @include btn(red);
+}
+
+/*
+*dialog
+*/
+.dialog-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include flexbox;
+  @include ver_center;
+  z-index: 4000;
+  display: none;
+  &.active{
+    @include flexbox;
+  }
+}
+
+.overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4000;
+}
+
+.dialog {
+  position: relative;
+  width: $dialog-width;
+  background-color: #fff;
+  border-radius: $dialog-radius;
+  overflow: hidden;
+  z-index: 4005;
+  .dialog-ct {
+    padding: px2rem(40px) px2rem(20px);
+    text-align: center;
+    p {
+      font-size: px2rem(36px);
+      color: #000;
+    }
+  }
+  .dialog-ft {
+    overflow: hidden;
+    text-align: center;
+    line-height: px2rem(80px);
+    @include flexbox;
+    .ft-btn {
+      position: relative;
+      @include flex(1);
+      width: 1%;
+      border-top: 1px solid #ccc;
+      font-size: px2rem(36px);
+      color: #000;
+      &:active {
+        background-color: darken(#eee, 1%);
+      }
+      &:first-of-type {
+        border-bottom-left-radius: $dialog-radius;
+        border-right: 1px solid #ccc;
+      }
+      &:last-of-type {
+        border-bottom-right-radius: $dialog-radius;
+      }
+    }
+  }
+}
+
