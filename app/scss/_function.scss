@@ -1,0 +1,5 @@
+//px to rem
+@function px2rem($size) {
+  $base-font-size: 75px !default;
+  @return $size / $base-font-size * 1rem;
+}
