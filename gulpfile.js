@@ -7,6 +7,9 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var sass = require('gulp-sass');
 var scss = require('gulp-scss');
+var imagemin = require("gulp-imagemin");
+var jsmin = require('gulp-jsmin');
+var rename = require('gulp-rename');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
@@ -15,8 +18,8 @@ var reload = browserSync.reload;
  * */
 gulp.task('testLess', function () {
     gulp.src('app/less/*.less') //该任务针对的文件
-        .pipe(less()) //该任务调用的模块
-        .pipe(gulp.dest('app/css')); //将会在app/css下生成css
+      .pipe(less()) //该任务调用的模块
+      .pipe(gulp.dest('app/css')); //将会在app/css下生成css
 });
 
 /*
@@ -24,8 +27,8 @@ gulp.task('testLess', function () {
  * */
 gulp.task('testSass', function () {
     return gulp.src('app/sass/*.sass')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('app/css'));
+      .pipe(sass().on('error', sass.logError))
+      .pipe(gulp.dest('app/css'));
 });
 
 /*
@@ -33,8 +36,8 @@ gulp.task('testSass', function () {
  * */
 gulp.task('testScss', function () {
     gulp.src('app/scss/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('app/css'));
+      .pipe(sass())
+      .pipe(gulp.dest('app/css'));
 });
 
 /*
@@ -65,6 +68,26 @@ gulp.task('scssWatch', function () {
     gulp.watch(['app/scss/*.scss'], function () {
         gulp.run('testScss');
     })
+});
+
+
+/*
+ *图片压缩
+ * */
+gulp.task('minImage', function () {
+    gulp.src('app/img/*.*')
+      .pipe(imagemin())
+      .pipe(gulp.dest('app/img/dist'));
+});
+
+/*
+ * js压缩
+ * */
+gulp.task('minJs', function () {
+    gulp.src('app/js/min/*.js')
+      .pipe(jsmin())
+      .pipe(rename({suffix: '.min'}))
+      .pipe(gulp.dest('app/js/min/dist'));
 });
 
 
